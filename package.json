@@ -4,10 +4,16 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "demo": "node demo.js"
+    "demo": "node demo.js",
+    "vv": "gulp -v"
   },
   "dependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
     "chalk": "^4.1.0",
-    "commander": "^6.2.1"
+    "commander": "^6.2.1",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-uglify": "^3.0.2"
   }
 }
