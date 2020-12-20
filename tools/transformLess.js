@@ -9,7 +9,7 @@ function transformLess (lessFile, config = {}) {
   const {cwd = process.cwd()} = config
   const resolvedLessFile = path.resolve(cwd, lessFile)
   console.log(`resolvedLessFile: ${resolvedLessFile}`)
-  let data = readFileSync('resolvedLessFile', 'utf-8')
+  let data = readFileSync(resolvedLessFile, 'utf-8')
   if (/^uFEFF/.test(data)) {
     console.log('data start with uFEFF ... ...嘿嘿')
     data = data.replace(/^uFEFF/, '')
@@ -17,7 +17,7 @@ function transformLess (lessFile, config = {}) {
   const lessOpts = {
     paths: [path.dirname(resolvedLessFile)],
     fileName: resolvedLessFile,
-    plugins: [new NpmImportPlugin({ prefix: '~' })],
+    // plugins: [new NpmImportPlugin({ prefix: '~' })],
     javascriptEnabled: true
   }
   return less.render(data, lessOpts)

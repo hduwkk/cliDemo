@@ -10,8 +10,12 @@
     "es": "node tools/run.js compile-with-es"
   },
   "dependencies": {
+    "autoprefixer": "^10.1.0",
     "commander": "^6.2.1",
     "gulp": "^4.0.2",
+    "less": "^4.0.0",
+    "merge2": "^1.4.1",
+    "postcss": "^8.2.1",
     "through2": "^4.0.2"
   }
 }
