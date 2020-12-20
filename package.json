@@ -1,0 +1,17 @@
+{
+  "name": "cliDemo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:hduwkk/cliDemo.git",
+  "author": "steve <873057692@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "compile": "node tools/run.js compile",
+    "es": "node tools/run.js compile-with-es"
+  },
+  "dependencies": {
+    "commander": "^6.2.1",
+    "gulp": "^4.0.2",
+    "through2": "^4.0.2"
+  }
+}
