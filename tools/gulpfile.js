@@ -5,6 +5,7 @@ const through2 = require('through2')
 const merge2 = require('merge2')
 const {src, series, dest} = gulp
 const transformLess = require('./transformLess')
+const util = require('./utils')
 
 const cwd = process.cwd()
 const libDir = path.join(cwd, 'lib')
@@ -18,14 +19,13 @@ function compile (dir) {
 function compileLess (dir) {
   return src('components/**/index\.less')
   .pipe(through2.obj(function (file, encoding, next) {
-    console.log(`less ${encoding}, ${file.path}, ${file.path.match(/\/style\/index\.less/)}`)
     this.push(file.clone())
-    file._path = file.path.replace(/\\/g, '\/')
-    if (file._path.match(/\/style\/index\.less/)) {
-      transformLess(file._path)
+    const filePath = util.formatPath(file.path)
+    if (filePath.match(/\/style\/index\.less/)) {
+      transformLess(filePath)
       .then(css => {
         file.contents = Buffer.from(css)
-        file.path = file._path.replace(/\.less$/, '.css')
+        file.path = filePath.replace(/\.less$/, '.css')
         this.push(file)
         next()
       })
