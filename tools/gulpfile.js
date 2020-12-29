@@ -14,7 +14,8 @@ const distDir = path.join(cwd, 'dist')
 
 function compile (dir) {
   // 删除dist目录
-  return merge2([compileLess(dir)])
+  const sources = ['components/**/*.js', 'components/**/*.jsx', '!components/*/__tests__/*']
+  return merge2([compileLess(dir), compileJsFileStream(gulp.src(sources), dir)])
 }
 function compileLess (dir) {
   return src('components/**/index\.less')
@@ -37,6 +38,13 @@ function compileLess (dir) {
     }
   }))
   .pipe(dest(dir))
+}
+
+function compileJsFileStream (js, dir) {
+  const stream = js.pipe(through2.obj(function (file, encoding, next) {
+    this.push(file.clone())
+
+  }))
 }
 
 console.log(`cwd: ${cwd}/nlib: ${libDir}/nes: ${esDir}`)
