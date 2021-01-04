@@ -6,6 +6,7 @@
   "author": "steve <873057692@qq.com>",
   "license": "MIT",
   "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.conf.js",
     "compile": "node tools/run.js compile",
     "es": "node tools/run.js compile-with-es"
   },
@@ -18,12 +19,18 @@
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "commander": "^6.2.1",
+    "cross-env": "^7.0.3",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
+    "html-webpack-plugin": "^4.5.1",
     "less": "^4.0.0",
     "merge2": "^1.4.1",
     "postcss": "^8.2.1",
-    "through2": "^4.0.2"
+    "through2": "^4.0.2",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.1",
+    "webpack-merge": "^5.7.3"
   },
   "browserslist": [
     "Android >= 4.0",
