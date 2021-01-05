@@ -23,7 +23,7 @@ module.exports = merge(baseWebpackConfig, {
           },
           {
             loader: 'less-loader',
-            options: { sourceMap: true, javascriptEnabled: true }
+            options: { sourceMap: true, lessOptions: { javascriptEnabled: true } }
           }
         ]
       },

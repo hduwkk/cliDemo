@@ -1,7 +1,9 @@
 const path = require('path');
 const WebpackBar = require('webpackbar');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const getBabelCommonConfig = require('../antd-tools/getBabelCommonConfig');
+const getBabelCommonConfig = require('../tools/getBabelCommonConfig');
+
+console.log('... ... ...')
 const babelConfig = getBabelCommonConfig(false);
 
 // babelConfig.plugins.push(require.resolve('babel-plugin-syntax-dynamic-import'));
@@ -52,10 +54,9 @@ module.exports = {
     extensions: ['.js', '.jsx', '.vue'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
-      antd: path.join(__dirname, '../components'),
-      'ant-design-vue': path.join(__dirname, '../components'),
-      'ant-design-vue/es': path.join(__dirname, '../components'),
-      'ant-design-vue/lib': path.join(__dirname, '../components'),
+      'w-design': path.join(__dirname, '../components'),
+      'w-design/es': path.join(__dirname, '../components'),
+      'w-design/lib': path.join(__dirname, '../components'),
       '@': path.join(__dirname, '../'),
     },
   },

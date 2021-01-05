@@ -4,8 +4,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routes from './routes';
-import './components';
+import wUI from 'w-design';
+import '../components/style.js';
 
+Vue.use(wUI)
 Vue.use(VueRouter);
 
 const router = new VueRouter({
