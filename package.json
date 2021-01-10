@@ -22,14 +22,15 @@
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "commander": "^6.2.1",
     "cross-env": "^7.0.3",
-    "css-loader": "^5.0.1",
+    "css-loader": "^3.6.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "html-webpack-plugin": "^4.5.1",
-    "less": "^4.0.0",
+    "less": "^3.12.2",
     "less-loader": "^7.2.1",
     "merge2": "^1.4.1",
     "postcss": "^8.2.1",
+    "postcss-loader": "^4.1.0",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.0.3",
     "through2": "^4.0.2",
@@ -46,6 +47,5 @@
   "browserslist": [
     "Android >= 4.0",
     "iOS >= 8"
-  ],
-  "dependencies": {}
+  ]
 }

@@ -1,7 +1,9 @@
 import {default as Button} from './button'
+import {default as Loading} from './loading'
 
 const components = [
-  Button
+  Button,
+  Loading
 ]
 
 const install = function (Vue) {

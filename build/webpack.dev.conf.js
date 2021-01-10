@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
-console.log(123321);
+console.log('webpack.dev.conf .. .. .. ..');
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'development',
@@ -15,21 +15,18 @@ module.exports = merge(baseWebpackConfig, {
     rules: [
       {
         test: /\.less$/,
+        sideEffects: true,
         use: [
           { loader: 'vue-style-loader' },
-          {
-            loader: 'css-loader',
-            options: { sourceMap: true }
-          },
-          {
-            loader: 'less-loader',
-            options: { sourceMap: true, lessOptions: { javascriptEnabled: true } }
-          }
+          { loader: 'css-loader' },
+          { loader: 'less-loader' },
+          { loader: 'postcss-loader' }
         ]
       },
       {
         test: /\.css$/,
-        use: ['vue-style-loader', 'css-loader']
+        sideEffects: true,
+        use: ['vue-style-loader', 'css-loader', 'postcss-loader']
       }
     ]
   },
@@ -41,7 +38,7 @@ module.exports = merge(baseWebpackConfig, {
     },
     disableHostCheck: true,
     hot: true,
-    open: true,
+    open: false,
     headers: { 'Access-Control-Allow-Origin': '*' }
   },
   performance: {

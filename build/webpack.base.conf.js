@@ -8,31 +8,31 @@ const babelConfig = getBabelCommonConfig(false);
 
 // babelConfig.plugins.push(require.resolve('babel-plugin-syntax-dynamic-import'));
 
-const vueLoaderOptions = {
-  loaders: {
-    js: [
-      {
-        loader: 'babel-loader',
-        options: {
-          presets: ['env'],
-          plugins: ['transform-vue-jsx'],
-        },
-      },
-    ],
-  },
-};
+// const vueLoaderOptions = {
+//   loaders: {
+//     js: [
+//       {
+//         loader: 'babel-loader',
+//         options: {
+//           presets: ['env'],
+//           plugins: ['transform-vue-jsx'],
+//         },
+//       },
+//     ],
+//   },
+// };
 
 module.exports = {
   mode: 'production',
   entry: {
-    index: [`./site/${process.env.ENTRY_INDEX || 'index'}.js`],
+    index: './site/index.js',
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: vueLoaderOptions,
+        loader: 'vue-loader'
+        // options: vueLoaderOptions,
       },
       {
         test: /\.(js|jsx)$/,
