@@ -6,6 +6,9 @@ console.log('webpack.dev.conf .. .. .. ..');
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'development',
+  entry: {
+    desktop: './site/desktop/main.js'
+  },
   output: {
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
@@ -41,13 +44,18 @@ module.exports = merge(baseWebpackConfig, {
     open: false,
     headers: { 'Access-Control-Allow-Origin': '*' }
   },
+  resolve: {
+    alias: {
+      'site-desktop-shared': path.join(__dirname, '../site/md/site-desktop-shared.js')
+    }
+  },
   performance: {
     hints: false
   },
   devtool: '#source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'site/index.html',
+      template: 'site/desktop/index.html',
       filename: 'index.html',
       inject: true
     })

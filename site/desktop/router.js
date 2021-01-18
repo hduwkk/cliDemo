@@ -1,13 +1,14 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import { decamelize } from '../common';
-import { config, documents } from 'site-desktop-shared';
-import { getLang, setDefaultLang } from '../common/locales';
-import '../common/iframe-router';
-
-const { locales, defaultLang } = config.site;
-
-setDefaultLang(defaultLang);
+import { documents } from 'site-desktop-shared';
+// import '../common/iframe-router';
+console.log(documents, 'documents')
+function decamelize(str, sep = '-') {
+  return str
+    .replace(/([a-z\d])([A-Z])/g, '$1' + sep + '$2')
+    .replace(/([A-Z]+)([A-Z][a-z\d]+)/g, '$1' + sep + '$2')
+    .toLowerCase();
+}
 
 function parseName(name) {
   if (name.indexOf('_') !== -1) {
@@ -26,71 +27,33 @@ function parseName(name) {
   };
 }
 
-function getLangFromRoute(route) {
-  const lang = route.path.split('/')[1];
-  const langs = Object.keys(locales);
-
-  if (langs.indexOf(lang) !== -1) {
-    return lang;
-  }
-
-  return getLang();
-}
-
 function getRoutes() {
   const routes = [];
   const names = Object.keys(documents);
 
-  if (locales) {
-    routes.push({
-      path: '*',
-      redirect: route => `/${getLangFromRoute(route)}/`,
-    });
-  } else {
-    routes.push({
-      path: '*',
-      redirect: '/',
-    });
-  }
-
-  function addHomeRoute(Home, lang) {
-    routes.push({
-      name: lang,
-      path: `/${lang || ''}`,
-      component: Home,
-      meta: { lang },
-    });
-  }
+  // routes.push({
+  //   path: '*',
+  //   redirect: '/',
+  // });
 
   names.forEach(name => {
     const { component, lang } = parseName(name);
-
-    if (component === 'home') {
-      addHomeRoute(documents[name], lang);
-    }
-
     if (lang) {
       routes.push({
         name: `${lang}/${component}`,
         path: `/${lang}/${component}`,
         component: documents[name],
-        meta: {
-          lang,
-          name: component,
-        },
+        meta: { lang, name: component }
       });
     } else {
       routes.push({
         name: `${component}`,
         path: `/${component}`,
         component: documents[name],
-        meta: {
-          name: component,
-        },
+        meta: { name: component }
       });
     }
   });
-
   return routes;
 }
 

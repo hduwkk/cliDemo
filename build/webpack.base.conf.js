@@ -3,7 +3,6 @@ const WebpackBar = require('webpackbar');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const getBabelCommonConfig = require('../tools/getBabelCommonConfig');
 
-console.log('... ... ...')
 const babelConfig = getBabelCommonConfig(false);
 
 // babelConfig.plugins.push(require.resolve('babel-plugin-syntax-dynamic-import'));
@@ -22,11 +21,15 @@ const babelConfig = getBabelCommonConfig(false);
 //   },
 // };
 
+// const CACHE_LOADER = {
+//   loader: 'cache-loader',
+//   options: {
+//     cacheDirectory: path.join(__dirname, '../node_modules/.cache')
+//   },
+// };
+
 module.exports = {
   mode: 'production',
-  entry: {
-    index: './site/index.js',
-  },
   module: {
     rules: [
       {
@@ -46,6 +49,10 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]',
         }
+      },
+      {
+        test: /\.md$/,
+        use: ['vue-loader', '@vant/markdown-loader'],
       }
     ]
   },
