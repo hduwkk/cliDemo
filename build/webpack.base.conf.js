@@ -52,7 +52,8 @@ module.exports = {
       },
       {
         test: /\.md$/,
-        use: ['vue-loader', '@vant/markdown-loader'],
+        use: [path.resolve(__dirname, './mdLoader.js')]
+        // use: ['@vant/markdown-loader']
       }
     ]
   },
@@ -67,5 +68,5 @@ module.exports = {
       '@': path.join(__dirname, '../'),
     },
   },
-  plugins: [new VueLoaderPlugin(), new WebpackBar()],
+  plugins: [new VueLoaderPlugin(), new WebpackBar()]
 };

@@ -33,13 +33,13 @@ dirs.forEach(dir => {
     fs.readFile(path.join(baseDir, dir.name, 'README.md'), { encoding: 'utf-8' }, (err, file) => {
       if (err) return console.log(err.toString())
       const result = md.render(file.toString())
-      fs.writeFile(dir.name + '_README.html', result, (err) => {
-        if (err) {
-          return console.log(err)
-        }
-        console.log(dir.name + ' 文件已保存')
-      })
-      // console.log(result, 'file')
+      // fs.writeFile(dir.name + '_README.html', result, (err) => {
+      //   if (err) {
+      //     return console.log(err)
+      //   }
+      //   console.log(dir.name + ' 文件已保存')
+      // })
+      console.log(result, 'file')
     })
   }
 })
