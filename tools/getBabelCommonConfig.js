@@ -14,7 +14,6 @@ module.exports = function (modules) {
   plugins.push([
     require.resolve('@babel/plugin-transform-runtime')
   ])
-  console.log(plugins, 'plugins .. ..')
   return {
     presets: [
       [

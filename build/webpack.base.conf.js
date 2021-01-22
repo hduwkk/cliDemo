@@ -52,7 +52,7 @@ module.exports = {
       },
       {
         test: /\.md$/,
-        use: [path.resolve(__dirname, './mdLoader.js')]
+        use: ['vue-loader', path.resolve(__dirname, '../packages/markdownLoader/index.js')]
         // use: ['@vant/markdown-loader']
       }
     ]
