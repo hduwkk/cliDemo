@@ -6,7 +6,8 @@ const baseWebpackConfig = require('./webpack.base.conf');
 module.exports = merge(baseWebpackConfig, {
   mode: 'development',
   entry: {
-    desktop: './site/desktop/main.js'
+    desktop: './site/desktop/main.js',
+    desktop: './site/mobile/main.js'
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -35,28 +36,28 @@ module.exports = merge(baseWebpackConfig, {
   devServer: {
     port: 3000,
     host: '0.0.0.0',
+    quiet: true,
     historyApiFallback: {
       rewrites: [{ from: /./, to: '/index.html' }]
     },
     disableHostCheck: true,
     hot: true,
-    open: false,
-    headers: { 'Access-Control-Allow-Origin': '*' }
+    open: false
   },
   resolve: {
     alias: {
       'site-desktop-shared': path.join(__dirname, '../site/md/site-desktop-shared.js')
     }
   },
-  performance: {
-    hints: false
-  },
   devtool: '#source-map',
   plugins: [
     new HtmlWebpackPlugin({
       template: 'site/desktop/index.html',
-      filename: 'index.html',
-      inject: true
+      filename: 'index.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: 'site/mobile/index.html',
+      filename: 'mobile.html',
     })
   ]
 });

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <demo-nav />
     <keep-alive>
       <router-view />
     </keep-alive>
@@ -8,10 +7,7 @@
 </template>
 
 <script>
-import DemoNav from './components/DemoNav';
-
 export default {
-  components: { DemoNav },
 };
 </script>
 

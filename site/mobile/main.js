@@ -3,7 +3,6 @@ import DemoBlock from './components/DemoBlock';
 import DemoSection from './components/DemoSection';
 import { router } from './router';
 import App from './App';
-import '@vant/touch-emulator';
 
 if (process.env.NODE_ENV !== 'production') {
   Vue.config.productionTip = false;

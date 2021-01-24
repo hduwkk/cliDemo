@@ -68,5 +68,8 @@ module.exports = {
       '@': path.join(__dirname, '../'),
     },
   },
-  plugins: [new VueLoaderPlugin(), new WebpackBar()]
+  plugins: [new VueLoaderPlugin(), new WebpackBar({
+    name: 'HDUWKK',
+    color: '#07c160'
+  })]
 };
